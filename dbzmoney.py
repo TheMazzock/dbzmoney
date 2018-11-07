@@ -30,6 +30,7 @@ def process_message(bot, u):
         
 while True:
     updates = bot.get_updates(offset = last_update_id).wait()
+    print(updates)
     try:
         for update in updates:
             if int(update.update_id) > int(last_update_id):
