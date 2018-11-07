@@ -1,6 +1,7 @@
 from twx.botapi import TelegramBot, ReplyKeyboardMarkup
 
 bot = TelegramBot('783761569:AAFk4MtxJkw0PmIsQf1uUfMYCo0wGLfsFSA')
+print(bot)
 bot.update_bot_info().wait()
 print(bot.username)
 
