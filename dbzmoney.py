@@ -2,7 +2,7 @@ import sys, traceback
 from time import sleep
 from twx.botapi import TelegramBot, ReplyKeyboardMarkup
 
-TOKEN = '756616900:AAHGeFWrGvONdLWHOYCXuiS2Sb1j_XgJ9YY'
+TOKEN = '783761569:AAFk4MtxJkw0PmIsQf1uUfMYCo0wGLfsFSA'
 
 bot = TelegramBot(TOKEN)
 bot.update_bot_info().wait()
