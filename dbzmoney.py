@@ -9,6 +9,7 @@ def hello(bot, update):
 updater = Updater('783761569:AAFk4MtxJkw0PmIsQf1uUfMYCo0wGLfsFSA')
 
 updater.dispatcher.add_handler(CommandHandler('hello', hello))
+updater.dispatcher.add_handler(CommandHandler('saldo', 'sempre poco'))
 
 updater.start_polling()
 updater.idle()
