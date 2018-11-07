@@ -39,5 +39,5 @@ while True:
         continue
     except Exception:
         ex = None
-        print traceback.format_exc()
+        print(traceback.format_exc())
         continue
