@@ -1,4 +1,5 @@
 from telegram.ext import Updater, CommandHandler
+from os import environ
 
 
 def hello(bot, update):
