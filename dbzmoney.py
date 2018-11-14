@@ -46,8 +46,8 @@ dispatcher = updater.dispatcher
 # LISTA DEI COMANDI
 hello_handler = CommandHandler('hello', hello)
 db_inserimento_handler = CommandHandler('db_inserimento', db_inserimento)
-put_handler = CommandHandler('put', put)
-get_handler = CommandHandler('get', get)
+put_handler = CommandHandler('put', put, pass_user_data=True)
+get_handler = CommandHandler('get', get, pass_user_data=True)
 
 
 # LISTA DEI TESTI
