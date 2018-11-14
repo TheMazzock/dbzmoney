@@ -6,12 +6,18 @@ def hello(bot, update):
     update.message.reply_text(
         'Hello {}'.format(update.message.from_user.first_name))
 
+def db_inserimento(bot, update):
+    print update
+    update.message.reply_text(
+        'Hello {}'.format(update.message.from_user.first_name))
+
 
 updater = Updater('783761569:AAFk4MtxJkw0PmIsQf1uUfMYCo0wGLfsFSA')
 dispatcher = updater.dispatcher
 
 # LISTA DEI COMANDI
 hello_handler = CommandHandler('hello', hello)
+db_inserimento_handler = CommandHandler('db_inserimento', db_inserimento)
 
 
 # LISTA DEI TESTI
@@ -22,6 +28,7 @@ hello_handler = CommandHandler('hello', hello)
 
 
 dispatcher.add_handler(hello_handler)
+dispatcher.add_handler(db_inserimento_handler)
 
 updater.start_polling()
 updater.idle()
