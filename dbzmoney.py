@@ -62,8 +62,8 @@ if __name__ == '__main__':
     
     dispatcher.add_handler(hello_handler)
     dispatcher.add_handler(db_inserimento_handler)
-    dispatcher.add_handler(put)
-    dispatcher.add_handler(get)
+    dispatcher.add_handler(put_handler)
+    dispatcher.add_handler(get_handler)
     updater.start_polling()
     updater.idle()
 
