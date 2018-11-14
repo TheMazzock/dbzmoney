@@ -7,7 +7,7 @@ def hello(bot, update):
         'Hello {}'.format(update.message.from_user.first_name))
 
 def db_inserimento(bot, update):
-    print(update)
+    print(update[chat][text])
     update.message.reply_text(
         'Hello {}'.format(update.message.from_user.first_name))
 
