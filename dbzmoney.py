@@ -7,8 +7,8 @@ def hello(bot, update):
         'Hello {}'.format(update.message.from_user.first_name))
 
 def db_inserimento(bot, update):
-    print(update)
-    print(update.message.text)
+    testo = update.message.text[15:]
+    print(testo)
     update.message.reply_text(
         'Hello {}'.format(update.message.from_user.first_name))
 
