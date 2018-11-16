@@ -51,10 +51,11 @@ from uuid import uuid4
 def hello(bot, update):
     update.message.reply_text(
         'Hello {}'.format(update.message.from_user.first_name))
+"""
     
-    
-def put(bot, update, user_data):
-    """Usage: /put value"""
+"""    
+def put(bot, update, user_data): """
+    """ Usage: /put value""" """
     # Generate ID and seperate value from command
     key = str(uuid4())
     value = update.message.text.partition(' ')[2]
@@ -65,8 +66,8 @@ def put(bot, update, user_data):
     update.message.reply_text(key)
     
     
-def get(bot, update, user_data):
-    """Usage: /get uuid"""
+def get(bot, update, user_data):"""
+    """Usage: /get uuid""" """
     # Seperate ID from command
     key = update.message.text.partition(' ')[2]
 
