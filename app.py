@@ -36,7 +36,7 @@ values = result.get('values', [])
 print(values)
 
 def situazione():
-    pass
+    bot.answerCallbackQuery(query_id, text='Situazione patrimonio aggiornata')
 
 def conti():
     pass
@@ -61,7 +61,7 @@ def on_callback_query(msg):
     
     if query_data == "situazione":
         situazione()
-        bot.answerCallbackQuery(query_id, text='Situazione patrimonio aggiornata')
+        
     elif query_data == "conti":
         conti()
         bot.answerCallbackQuery(query_id, text='Situazione conti aggiornata')
