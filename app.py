@@ -35,14 +35,14 @@ result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range
 values = result.get('values', [])
 print(values)
 
-def situazione(qid):
+def situazione(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione patrimonio aggiornata')
-    bot.sendMessage(qid, 'Ecco la situazione!')
+    bot.sendMessage(fid, 'Ecco la situazione!')
 
-def conti(qid):
+def conti(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
 
-def inserimento(qid):
+def inserimento(qid,fid):
     bot.answerCallbackQuery(qid, text='Pronto ad inserire!')
     
 
@@ -63,13 +63,13 @@ def on_callback_query(msg):
     print('Callback Query:', query_id, from_id, query_data)
     
     if query_data == "situazione":
-        situazione(query_id)
+        situazione(query_id,from_id)
         
     elif query_data == "conti":
-        conti(query_id)
+        conti(query_id,from_id)
         
     elif query_data == "inserimento":
-        inserimento(query_id)
+        inserimento(query_id,from_id)
         
 
 
