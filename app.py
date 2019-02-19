@@ -49,11 +49,11 @@ def on_chat_message(msg):
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
                      [InlineKeyboardButton(text='Situazione', callback_data='situazione'),
-                     InlineKeyboardButton(text='Conti', callback_data='conti')],
-                     [InlineKeyboardButton(text='Inserimento', callback_data='inserimento')],
+                     InlineKeyboardButton(text='Conti', callback_data='conti'),
+                     InlineKeyboardButton(text='Inserimento', callback_data='inserimento')],
                  ])
 
-    bot.sendMessage(chat_id, 'Use inline keyboard', reply_markup=keyboard)
+    bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=keyboard)
 
 def on_callback_query(msg):
     query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
