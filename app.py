@@ -4,7 +4,7 @@ import googleapiclient.discovery
 from google.oauth2 import service_account
 import telepot, time, sqlite3, random, csv
 from telepot.loop import MessageLoop
-from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
+from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from pprint import pprint
 
 def get_credentials():
