@@ -38,14 +38,16 @@ print(values)
 def situazione(qid):
     bot.answerCallbackQuery(qid, text='Situazione patrimonio aggiornata')
 
-def conti():
-    pass
+def conti(qid):
+    bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
 
-def inserimento():
-    pass
+def inserimento(qid):
+    bot.answerCallbackQuery(qid, text='Pronto ad inserire!')
+    
 
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
+    print(chat_id)
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
                      [InlineKeyboardButton(text='Situazione', callback_data='situazione'),
@@ -63,11 +65,11 @@ def on_callback_query(msg):
         situazione(query_id)
         
     elif query_data == "conti":
-        conti()
-        bot.answerCallbackQuery(query_id, text='Situazione conti aggiornata')
+        conti(query_id)
+        
     elif query_data == "inserimento":
-        inserimento()
-        bot.answerCallbackQuery(query_id, text='Pronto ad inserire!')
+        inserimento(query_id)
+        
 
 
 """
