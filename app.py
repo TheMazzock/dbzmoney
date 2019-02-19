@@ -35,8 +35,8 @@ result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range
 values = result.get('values', [])
 print(values)
 
-def situazione():
-    bot.answerCallbackQuery(query_id, text='Situazione patrimonio aggiornata')
+def situazione(qid):
+    bot.answerCallbackQuery(qid, text='Situazione patrimonio aggiornata')
 
 def conti():
     pass
@@ -60,7 +60,7 @@ def on_callback_query(msg):
     print('Callback Query:', query_id, from_id, query_data)
     
     if query_data == "situazione":
-        situazione()
+        situazione(query_id)
         
     elif query_data == "conti":
         conti()
