@@ -2,7 +2,10 @@ import os
 from flask import Flask, render_template
 import googleapiclient.discovery
 from google.oauth2 import service_account
-
+import telepot, time, sqlite3, random, csv
+from telepot.loop import MessageLoop
+from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
+from pprint import pprint
 
 def get_credentials():
     scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
@@ -25,9 +28,33 @@ def get_service(service_name='sheets', api_version='v4'):
     service = googleapiclient.discovery.build(service_name, api_version, credentials=credentials)
     return service
 
+start_keyboard = [["Situazione","Conti del mese"],["Inserisci"],["Aiuto"]]
+start_markup = ReplyKeyboardMarkup(keyboard=start_keyboard, one_time_keyboard=False)
 
+def handle(msg):
+    content_type, chat_type, chat_id = telepot.glance(msg)
+    print(content_type, chat_type, chat_id)
+    pprint(msg)
+    
+    try:
+        username = msg['from']['username']
+    except:
+        firstname = msg['from']['first_name']
+    user_id = msg['from']['id']
+    
+    if content_type == 'text':
+        text = msg['text']
+    
+    if text == '/start':
+        bot.sendMessage(chat_id, str("Come posso aiutarti?"), reply_markup=start_markup)
+    elif text == 'Aiuto':
+        bot.sendMessage(chat_id,'Bot sviluppato da Alessio')
+    else:
+        bot.sendMessage(chat_id,text)
+
+
+"""
 app = Flask(__name__)
-
 
 @app.route('/', methods=['GET'])
 def homepage():
@@ -44,3 +71,13 @@ def homepage():
 
 if __name__ == '__main__':
     app.run(debug=True)
+"""
+
+TOKEN = '764377188:AAGbhMbo2v4LjLTGu6I8D3soGIVmCVyFOJA'
+bot = telepot.Bot(TOKEN)
+MessageLoop(bot, handle).run_as_thread()
+print('Listening ....')
+# Keep the program running.
+while 1:
+    time.sleep(10)
+conn.close()
