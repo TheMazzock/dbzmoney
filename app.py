@@ -53,8 +53,13 @@ def on_chat_message(msg):
 def on_callback_query(msg):
     query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
     print('Callback Query:', query_id, from_id, query_data)
-
-    bot.answerCallbackQuery(query_id, text='Got it')
+    
+    if query_data == "situazione":
+        bot.answerCallbackQuery(query_id, text='Situazione patrimonio aggiornata')
+    elif query_data == "conti":
+        bot.answerCallbackQuery(query_id, text='Situazione conti aggiornata')
+    elif query_data == "inserimento":
+        bot.answerCallbackQuery(query_id, text='Pronto ad inserire!')
 
 
 """
