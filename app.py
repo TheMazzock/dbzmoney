@@ -37,6 +37,7 @@ print(values)
 
 def situazione(qid):
     bot.answerCallbackQuery(qid, text='Situazione patrimonio aggiornata')
+    bot.sendMessage(qid, 'Ecco la situazione!')
 
 def conti(qid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
