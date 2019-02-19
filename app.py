@@ -6,7 +6,7 @@ import telepot, time, sqlite3, random, csv
 from telepot.loop import MessageLoop
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
 from pprint import pprint
-"""
+
 def get_credentials():
     scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
     GOOGLE_PRIVATE_KEY = os.environ["GOOGLE_PRIVATE_KEY"]
@@ -27,7 +27,15 @@ def get_service(service_name='sheets', api_version='v4'):
     credentials = get_credentials()
     service = googleapiclient.discovery.build(service_name, api_version, credentials=credentials)
     return service
-"""
+
+service = get_service()
+spreadsheet_id = os.environ["GOOGLE_SPREADSHEET_ID"]
+range_name = os.environ["database!B1:B100"]
+result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
+values = result.get('values', [])
+print values
+
+
 start_keyboard = [["Situazione","Conti del mese"],["Inserisci"],["Aiuto"]]
 start_markup = ReplyKeyboardMarkup(keyboard=start_keyboard, one_time_keyboard=False)
 
