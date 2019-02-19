@@ -47,7 +47,7 @@ def situazione(qid,fid):
     dbsituazione = rsituazione.get('values', [])
     print(dbsituazione)
     for value in values:
-        b=value(0)
+        b=value
     bot.sendMessage(fid, dbsituazione)
 
 def conti(qid,fid):
