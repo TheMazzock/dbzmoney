@@ -33,7 +33,7 @@ spreadsheet_id = os.environ["GOOGLE_SPREADSHEET_ID"]
 range_name = os.environ["database!B1:B100"]
 result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
 values = result.get('values', [])
-print values
+print(values)
 
 
 start_keyboard = [["Situazione","Conti del mese"],["Inserisci"],["Aiuto"]]
