@@ -35,9 +35,14 @@ result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range
 values = result.get('values', [])
 print(values)
 
+def situazione():
+    pass
 
-start_keyboard = [["Situazione","Conti del mese"],["Inserisci"],["Aiuto"]]
-start_markup = ReplyKeyboardMarkup(keyboard=start_keyboard, one_time_keyboard=False)
+def conti():
+    pass
+
+def inserimento():
+    pass
 
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
@@ -55,10 +60,13 @@ def on_callback_query(msg):
     print('Callback Query:', query_id, from_id, query_data)
     
     if query_data == "situazione":
+        situazione()
         bot.answerCallbackQuery(query_id, text='Situazione patrimonio aggiornata')
     elif query_data == "conti":
+        conti()
         bot.answerCallbackQuery(query_id, text='Situazione conti aggiornata')
     elif query_data == "inserimento":
+        inserimento()
         bot.answerCallbackQuery(query_id, text='Pronto ad inserire!')
 
 
