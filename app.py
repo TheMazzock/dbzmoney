@@ -43,7 +43,9 @@ def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
-                   [InlineKeyboardButton(text='Press me', callback_data='press')],
+                   [InlineKeyboardButton(text='Situazione', callback_data='situazione')],
+                   [InlineKeyboardButton(text='Conti del mese', callback_data='conti')]
+                   [InlineKeyboardButton(text='Inserimento', callback_data='inserimento')]
                ])
 
     bot.sendMessage(chat_id, 'Use inline keyboard', reply_markup=keyboard)
