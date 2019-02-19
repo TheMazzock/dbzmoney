@@ -73,7 +73,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 """
 
-TOKEN = '794323372:AAFL4n2_3jDCpPzm720ZyYfAzyQOfT9aRf4'
+TOKEN = os.environ["BOT_TOKEN"]
 bot = telepot.Bot(TOKEN)
 MessageLoop(bot, handle).run_as_thread()
 print('Listening ....')
