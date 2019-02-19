@@ -42,7 +42,7 @@ start_markup = ReplyKeyboardMarkup(keyboard=start_keyboard, one_time_keyboard=Fa
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
 
-keyboard = InlineKeyboardMarkup(inline_keyboard=[
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
                      [InlineKeyboardButton(text='Situazione', callback_data='situazione'),
                      InlineKeyboardButton(text='Conti', callback_data='conti')],
                      [InlineKeyboardButton(text='Inserimento', callback_data='inserimento')],
