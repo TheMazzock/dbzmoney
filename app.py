@@ -41,7 +41,14 @@ def situazione(qid,fid):
     result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
     values = result.get('values', [])
     print(values)
-    bot.sendMessage(fid, values)
+    keyboard=[]
+    range_situazione = "situazione!A2:E14"
+    rsituazione = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_situazione).execute()
+    dbsituazione = rsituazione.get('values', [])
+    print(dbsituazione)
+    for value in values:
+        b=value(0)
+    bot.sendMessage(fid, dbsituazione)
 
 def conti(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
