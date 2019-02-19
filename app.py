@@ -37,7 +37,11 @@ print(values)
 
 def situazione(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione patrimonio aggiornata')
-    bot.sendMessage(fid, 'Ecco la situazione!')
+    range_name = "database!D1:D10"
+    result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
+    values = result.get('values', [])
+    print(values)
+    bot.sendMessage(fid, values)
 
 def conti(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
