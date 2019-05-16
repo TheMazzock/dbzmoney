@@ -48,7 +48,7 @@ def situazione(qid,fid):
     dbsituazione = rsituazione.get('values', [])
     print(dbsituazione)
     for x in dbsituazione:
-        if x in gruppi:
+        if x[0] in gruppi:
             print(x[0])
         else:
             print(x)
