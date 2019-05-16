@@ -54,7 +54,7 @@ def situazione(qid,fid):
             output = output + x[0]+"\n"
         else:
             print(x)
-            output = output + x[0]+"\n"
+            output = output + x[0] + "\t" + x[1] + "\n"
     bot.sendMessage(fid, output)
 
 def conti(qid,fid):
