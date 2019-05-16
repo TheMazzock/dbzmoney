@@ -37,6 +37,7 @@ values = result.get('values', [])
 print(values)
 
 def situazione(qid,fid):
+    output=""
     bot.answerCallbackQuery(qid, text='Situazione patrimonio aggiornata')
     range_name = "database!D1:D10"
     result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
@@ -50,9 +51,11 @@ def situazione(qid,fid):
     for x in dbsituazione:
         if x[0] in gruppi:
             print(x[0])
+            output = output + x[0]+"\n"
         else:
             print(x)
-    bot.sendMessage(fid, dbsituazione)
+            output = output + x[0]+"\n"
+    bot.sendMessage(fid, output)
 
 def conti(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
