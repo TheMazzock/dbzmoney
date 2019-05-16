@@ -6,6 +6,7 @@ import telepot, time, sqlite3, random, csv
 from telepot.loop import MessageLoop
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from pprint import pprint
+gruppi = ['CONTI CORRENTI','CARTE','CONTANTI','ALTRO']
 
 def get_credentials():
     scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
@@ -46,8 +47,8 @@ def situazione(qid,fid):
     rsituazione = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_situazione).execute()
     dbsituazione = rsituazione.get('values', [])
     print(dbsituazione)
-    for value in values:
-        b=value
+    for x in dbsituazione:
+        print(x)
     bot.sendMessage(fid, dbsituazione)
 
 def conti(qid,fid):
