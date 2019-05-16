@@ -48,7 +48,10 @@ def situazione(qid,fid):
     dbsituazione = rsituazione.get('values', [])
     print(dbsituazione)
     for x in dbsituazione:
-        print(x)
+        if x in gruppi:
+            print(x[0])
+        else:
+            print(x)
     bot.sendMessage(fid, dbsituazione)
 
 def conti(qid,fid):
