@@ -97,7 +97,7 @@ def on_callback_query(msg):
         inserimento(query_id,from_id)
     
     elif query_data == "ritorna":
-        inserimento(query_id,from_id)
+        ritorna(query_id,from_id)
         
 
 
