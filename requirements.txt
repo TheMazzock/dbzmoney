@@ -22,3 +22,5 @@ uritemplate==3.0.0
 Werkzeug==0.14.1
 telepot
 pprint
+python-telegram-bot
+logging
