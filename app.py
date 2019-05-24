@@ -12,7 +12,7 @@ startkeyboard = InlineKeyboardMarkup(inline_keyboard=[
                      InlineKeyboardButton(text='Conti', callback_data='conti'),
                      InlineKeyboardButton(text='Inserimento', callback_data='inserimento')],
                  ])
-situazionetkeyboard = InlineKeyboardMarkup(inline_keyboard=[
+situazionekeyboard = InlineKeyboardMarkup(inline_keyboard=[
                      [InlineKeyboardButton(text='Spese previste', callback_data='spesepreviste'),
                      InlineKeyboardButton(text='Ritorna', callback_data='ritorna')],
                  ])
