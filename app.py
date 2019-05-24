@@ -65,7 +65,7 @@ def situazione(qid,fid):
             print(x)
             output = output + x[0] + "\t" + x[1] + "\n"
     bot.sendMessage(fid, output)
-    bot.sendMessage(chat_id, 'Seleziona', reply_markup=situazionekeyboard)
+    bot.sendMessage(qid, 'Seleziona', reply_markup=situazionekeyboard)
 
 def conti(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
@@ -75,7 +75,7 @@ def inserimento(qid,fid):
     
 def ritorna(qid,fid):
     bot.answerCallbackQuery(qid, text='Torno indietro!')
-    bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startkeyboard)
+    bot.sendMessage(qid_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startkeyboard)
     
 
 def on_chat_message(msg):
