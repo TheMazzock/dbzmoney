@@ -7,6 +7,15 @@ from telepot.loop import MessageLoop
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from pprint import pprint
 gruppi = ['CONTI CORRENTI','CARTE','CONTANTI','ALTRO']
+startkeyboard = InlineKeyboardMarkup(inline_keyboard=[
+                     [InlineKeyboardButton(text='Situazione', callback_data='situazione'),
+                     InlineKeyboardButton(text='Conti', callback_data='conti'),
+                     InlineKeyboardButton(text='Inserimento', callback_data='inserimento')],
+                 ])
+situazionetkeyboard = InlineKeyboardMarkup(inline_keyboard=[
+                     [InlineKeyboardButton(text='Spese previste', callback_data='spesepreviste'),
+                     InlineKeyboardButton(text='Ritorna', callback_data='ritorna'),
+                 ])
 
 def get_credentials():
     scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
@@ -56,6 +65,7 @@ def situazione(qid,fid):
             print(x)
             output = output + x[0] + "\t" + x[1] + "\n"
     bot.sendMessage(fid, output)
+    bot.sendMessage(chat_id, 'Seleziona', reply_markup=situazionekeyboard)
 
 def conti(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
@@ -63,18 +73,15 @@ def conti(qid,fid):
 def inserimento(qid,fid):
     bot.answerCallbackQuery(qid, text='Pronto ad inserire!')
     
+def ritorna(qid,fid)
+    bot.answerCallbackQuery(qid, text='Torno indietro!')
+    bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startkeyboard)
+    
 
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     print(chat_id)
-
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[
-                     [InlineKeyboardButton(text='Situazione', callback_data='situazione'),
-                     InlineKeyboardButton(text='Conti', callback_data='conti'),
-                     InlineKeyboardButton(text='Inserimento', callback_data='inserimento')],
-                 ])
-
-    bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=keyboard)
+    bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startkeyboard)
 
 def on_callback_query(msg):
     query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
@@ -87,6 +94,9 @@ def on_callback_query(msg):
         conti(query_id,from_id)
         
     elif query_data == "inserimento":
+        inserimento(query_id,from_id)
+    
+    elif query_data == "ritorna":
         inserimento(query_id,from_id)
         
 
