@@ -73,7 +73,7 @@ def conti(qid,fid):
 def inserimento(qid,fid):
     bot.answerCallbackQuery(qid, text='Pronto ad inserire!')
     
-def ritorna(qid,fid)
+def ritorna(qid,fid):
     bot.answerCallbackQuery(qid, text='Torno indietro!')
     bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startkeyboard)
     
