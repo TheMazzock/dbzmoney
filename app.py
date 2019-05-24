@@ -14,7 +14,7 @@ startkeyboard = InlineKeyboardMarkup(inline_keyboard=[
                  ])
 situazionetkeyboard = InlineKeyboardMarkup(inline_keyboard=[
                      [InlineKeyboardButton(text='Spese previste', callback_data='spesepreviste'),
-                     InlineKeyboardButton(text='Ritorna', callback_data='ritorna'),
+                     InlineKeyboardButton(text='Ritorna', callback_data='ritorna')],
                  ])
 
 def get_credentials():
