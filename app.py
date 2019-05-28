@@ -52,10 +52,12 @@ gruppiconti = ['ENTRATE','RATE FISSE','SPESE DI CASA','ANIMALI','MEZZI DI TRASPO
 conti_range = "conti!A21:A130"
 conti_result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=conti_range).execute()
 conti_values = conti_result.get('values', [])
-print(conti_values)
 for x in conti_values:
-        if x[0] in gruppiconti:
-            print(x[0])
+   if x[0] in gruppiconti:
+       pass
+   else:
+       pass
+            
 
 
 def situazione(qid,fid):
