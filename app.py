@@ -57,7 +57,7 @@ for x in conti_values:
     if x[0] in gruppiconti:
         pass
     else:
-        conti_lista = conti_lista + x[0]
+        conti_lista.append(x[0])
 print(conti_lista)
             
 
