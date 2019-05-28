@@ -7,6 +7,16 @@ from telepot.loop import MessageLoop
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from pprint import pprint
 gruppi = ['CONTI CORRENTI','CARTE','CONTANTI','ALTRO']
+gruppiconti = ['ENTRATE','RATE FISSE','SPESE DI CASA','ANIMALI','MEZZI DI TRASPORTO','SPESE RICARDO','SPESE MEDICHE','DIVERTIMENTI','VARIE','EXTRA','TRANSITORI']
+conti_range = "conti!A21:A130"
+conti_result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=conti_range).execute()
+conti_values = conti_result.get('values', [])
+print(conti_values)
+for x in conti_values:
+        if x[0] in gruppiconti:
+            print(x[0])
+
+gruppialessio = ['PERSONALI ALESSIO','ENTRATE ALESSIO','SPESE ALESSIO','SALDO ALESSIO']
 startkeyboard = InlineKeyboardMarkup(inline_keyboard=[
                      [InlineKeyboardButton(text='Situazione', callback_data='situazione'),
                      InlineKeyboardButton(text='Conti', callback_data='conti'),
