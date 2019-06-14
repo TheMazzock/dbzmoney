@@ -45,7 +45,6 @@ spreadsheet_id = os.environ["GOOGLE_SPREADSHEET_ID"]
 range_name = "database!B1:B100"
 result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
 values = result.get('values', [])
-print(values)
 
 gruppi = ['CONTI CORRENTI','CARTE','CONTANTI','ALTRO']
 gruppiconti = ['ENTRATE','RATE FISSE','SPESE DI CASA','ANIMALI','MEZZI DI TRASPORTO','SPESE RICARDO','SPESE MEDICHE','DIVERTIMENTI','VARIE','EXTRA','TRANSITORI']
@@ -62,7 +61,6 @@ print(conti_lista)
 contikbd = [ InlineKeyboardButton(text=c, callback_data=c)
           for c in conti_lista ]
 contikeyboard=InlineKeyboardMarkup(inline_keyboard=[contikbd])
-print(contikeyboard)
 
             
 
@@ -78,7 +76,6 @@ def situazione(qid,fid):
     range_situazione = "situazione!A2:E14"
     rsituazione = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_situazione).execute()
     dbsituazione = rsituazione.get('values', [])
-    print(dbsituazione)
     for x in dbsituazione:
         if x[0] in gruppi:
             print(x[0])
@@ -94,6 +91,7 @@ def conti(qid,fid):
 
 def inserimento(qid,fid):
     bot.answerCallbackQuery(qid, text='Pronto ad inserire!')
+    bot.sendMessage(fid, 'Seleziona', reply_markup=contikeyboard)
     
 def ritorna(qid,fid):
     bot.answerCallbackQuery(qid, text='Torno indietro!')
