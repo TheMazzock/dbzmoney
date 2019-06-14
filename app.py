@@ -59,7 +59,7 @@ for x in conti_values:
     else:
         conti_lista.append(x[0])
 print(conti_lista)
-contikbd = [ InlineKeyboardButton(text=conti_lista[c], callback_data=c)
+contikbd = [ InlineKeyboardButton(text=c, callback_data=c)
           for c in conti_lista ]
 contikeyboard=InlineKeyboardMarkup(inline_keyboard=[contikbd])
 print(contikeyboard)
