@@ -81,7 +81,7 @@ def conti(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
 
 def inserimento(cid):
-    bot.sendMessage(fid, 'Seleziona', reply_markup=contimarkup)
+    bot.sendMessage(cid, 'Seleziona', reply_markup=contimarkup)
     
 def ritorna(qid,fid):
     bot.answerCallbackQuery(qid, text='Torno indietro!')
