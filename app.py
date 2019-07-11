@@ -8,7 +8,7 @@ from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboa
 from pprint import pprint
 
 startkeyboard = ['Situazione', 'Inserimento', 'Conti']
-startmarkup = ReplyKeyboardMarkup(keyboard=start_keyboard, one_time_keyboard=False)
+startmarkup = ReplyKeyboardMarkup(keyboard=startkeyboard, one_time_keyboard=False)
 
 gruppialessio = ['PERSONALI ALESSIO','ENTRATE ALESSIO','SPESE ALESSIO','SALDO ALESSIO']
 situazionekeyboard = InlineKeyboardMarkup(inline_keyboard=[
