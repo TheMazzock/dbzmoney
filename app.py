@@ -91,7 +91,6 @@ def ritorna(qid,fid):
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     print(chat_id)
-    bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startmarkup)
     if content_type == 'text':
         text = msg['text']
     if text == '/start':
@@ -99,9 +98,9 @@ def on_chat_message(msg):
     if text == "Situazione":
         situazione(chat_id)
     if text == "Inserimento":
-        inserimento(chat_id,from_id)
+        inserimento(chat_id)
     if text == "Conti":
-        conti(chat_id,from_id)
+        conti(chat_id)
         
 def on_callback_query(msg):
     query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
