@@ -44,7 +44,7 @@ result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range
 values = result.get('values', [])
 
 gruppi = ['CONTI CORRENTI','CARTE','CONTANTI','ALTRO']
-gruppiconti = ['ENTRATE','RATE FISSE','SPESE DI CASA','ANIMALI','MEZZI DI TRASPORTO','SPESE RICARDO','SPESE MEDICHE','DIVERTIMENTI','VARIE','EXTRA','TRANSITORI']
+gruppiconti = ['ENTRATE','RATE FISSE','SPESE DI CASA','ANIMALI','MEZZI DI TRASPORTO','SPESE RICARDO','SPESE MEDICHE','DIVERTIMENTI','VARIE','EXTRA','TRANSITORI','PERSONALI ALESSIO','ENTRATE ALESSIO','SPESE ALESSIO','SALDO ALESSIO']
 conti_range = "conti!A21:A130"
 conti_result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=conti_range).execute()
 conti_values = conti_result.get('values', [])
@@ -53,7 +53,7 @@ for x in conti_values:
     if x[0] in gruppiconti:
         pass
     else:
-        conti_lista.append(x[0])
+        conti_lista.append([x[0]])
 print(conti_lista)
 contikbd = [ InlineKeyboardButton(text=c, callback_data=c)
           for c in conti_lista ]
