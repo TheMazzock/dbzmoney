@@ -54,14 +54,9 @@ for x in conti_values:
         pass
     else:
         conti_lista.append([x[0]])
-print(conti_lista)
-contikbd = [ InlineKeyboardButton(text=c, callback_data=c)
-          for c in conti_lista ]
-contikeyboard=InlineKeyboardMarkup(inline_keyboard=[contikbd])
+contimarkup = ReplyKeyboardMarkup(keyboard=conti_lista, one_time_keyboard=False)
 
-            
-
-
+     
 def situazione(cid):
     output=""
     range_name = "database!D1:D10"
@@ -85,9 +80,8 @@ def situazione(cid):
 def conti(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
 
-def inserimento(qid,fid):
-    bot.answerCallbackQuery(qid, text='Pronto ad inserire!')
-    bot.sendMessage(fid, 'Seleziona', reply_markup=contikeyboard)
+def inserimento(cid):
+    bot.sendMessage(fid, 'Seleziona', reply_markup=contimarkup)
     
 def ritorna(qid,fid):
     bot.answerCallbackQuery(qid, text='Torno indietro!')
