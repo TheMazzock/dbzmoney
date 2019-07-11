@@ -7,13 +7,10 @@ from telepot.loop import MessageLoop
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from pprint import pprint
 
+startkeyboard = [['Situazione', 'Inserimento', 'Conti']
+startmarkup = ReplyKeyboardMarkup(keyboard=startkeyboard, one_time_keyboard=False)
 
 gruppialessio = ['PERSONALI ALESSIO','ENTRATE ALESSIO','SPESE ALESSIO','SALDO ALESSIO']
-startkeyboard = InlineKeyboardMarkup(inline_keyboard=[
-                     [InlineKeyboardButton(text='Situazione', callback_data='situazione'),
-                     InlineKeyboardButton(text='Conti', callback_data='conti'),
-                     InlineKeyboardButton(text='Inserimento', callback_data='inserimento')],
-                 ])
 situazionekeyboard = InlineKeyboardMarkup(inline_keyboard=[
                      [InlineKeyboardButton(text='Spese previste', callback_data='spesepreviste'),
                      InlineKeyboardButton(text='Ritorna', callback_data='ritorna')],
@@ -95,13 +92,18 @@ def inserimento(qid,fid):
     
 def ritorna(qid,fid):
     bot.answerCallbackQuery(qid, text='Torno indietro!')
-    bot.sendMessage(fid, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startkeyboard)
+    bot.sendMessage(fid, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startmarkup)
     
 
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     print(chat_id)
     bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startkeyboard)
+    if content_type == 'text':
+        text = msg['text']
+    if text == '/start':
+        bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startmarkup)
+                 
 
 def on_callback_query(msg):
     query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
