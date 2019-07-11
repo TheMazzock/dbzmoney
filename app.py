@@ -62,9 +62,8 @@ contikeyboard=InlineKeyboardMarkup(inline_keyboard=[contikbd])
             
 
 
-def situazione(qid,fid):
+def situazione(cid):
     output=""
-    bot.answerCallbackQuery(qid, text='Situazione patrimonio aggiornata')
     range_name = "database!D1:D10"
     result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
     values = result.get('values', [])
@@ -80,8 +79,8 @@ def situazione(qid,fid):
         else:
             print(x)
             output = output + x[0] + "\t" + x[1] + "\n"
-    bot.sendMessage(fid, output)
-    bot.sendMessage(fid, 'Seleziona', reply_markup=situazionekeyboard)
+    bot.sendMessage(cid, output)
+    bot.sendMessage(cid, 'Seleziona', reply_markup=startmarkup)
 
 def conti(qid,fid):
     bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
@@ -96,8 +95,6 @@ def ritorna(qid,fid):
     
 
 def on_chat_message(msg):
-    print(msg)
-    print(telepot.glance(msg))
     content_type, chat_type, chat_id = telepot.glance(msg)
     print(chat_id)
     bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startmarkup)
@@ -106,7 +103,7 @@ def on_chat_message(msg):
     if text == '/start':
         bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startmarkup)
     if text == "Situazione":
-        situazione(chat_id,from_id)
+        situazione(chat_id)
     if text == "Inserimento":
         inserimento(chat_id,from_id)
     if text == "Conti":
