@@ -96,7 +96,9 @@ def ritorna(qid,fid):
     
 
 def on_chat_message(msg):
-    content_type, chat_type, chat_id, from_id = telepot.glance(msg)
+    print(msg)
+    print(telepot.glance(msg))
+    content_type, chat_type, chat_id = telepot.glance(msg)
     print(chat_id)
     bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startmarkup)
     if content_type == 'text':
