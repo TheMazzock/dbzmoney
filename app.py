@@ -17,33 +17,6 @@ situazionekeyboard = InlineKeyboardMarkup(inline_keyboard=[
                      InlineKeyboardButton(text='Ritorna', callback_data='ritorna')],
                  ])
 
-def get_credentials():
-    scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
-    GOOGLE_PRIVATE_KEY = os.environ["GOOGLE_PRIVATE_KEY"]
-    # The environment variable has escaped newlines, so remove the extra backslash
-    GOOGLE_PRIVATE_KEY = GOOGLE_PRIVATE_KEY.replace('\\n', '\n')
-
-    account_info = {
-      "private_key": GOOGLE_PRIVATE_KEY,
-      "client_email": os.environ["GOOGLE_CLIENT_EMAIL"],
-      "token_uri": "https://accounts.google.com/o/oauth2/token",
-    }
-
-    credentials = service_account.Credentials.from_service_account_info(account_info, scopes=scopes)
-    return credentials
-
-
-def get_service(service_name='sheets', api_version='v4'):
-    credentials = get_credentials()
-    service = googleapiclient.discovery.build(service_name, api_version, credentials=credentials)
-    return service
-
-service = get_service()
-spreadsheet_id = os.environ["GOOGLE_SPREADSHEET_ID"]
-range_name = "database!B1:B100"
-result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
-values = result.get('values', [])
-
 gruppi = ['CONTI CORRENTI','CARTE','CONTANTI','ALTRO']
 gruppiconti = ['ENTRATE','RATE FISSE','SPESE DI CASA','ANIMALI','MEZZI DI TRASPORTO','SPESE RICARDO','SPESE MEDICHE','DIVERTIMENTI','VARIE','EXTRA','TRANSITORI','PERSONALI ALESSIO','ENTRATE ALESSIO','SPESE ALESSIO','SALDO ALESSIO']
 conti_range = "conti!A21:A130"
@@ -154,6 +127,36 @@ def handle(msg):
         bot.sendMessage(chat_id,text)
 """
 '''
+def get_credentials():
+    scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
+    GOOGLE_PRIVATE_KEY = os.environ["GOOGLE_PRIVATE_KEY"]
+    # The environment variable has escaped newlines, so remove the extra backslash
+    GOOGLE_PRIVATE_KEY = GOOGLE_PRIVATE_KEY.replace('\\n', '\n')
+
+    account_info = {
+      "private_key": GOOGLE_PRIVATE_KEY,
+      "client_email": os.environ["GOOGLE_CLIENT_EMAIL"],
+      "token_uri": "https://accounts.google.com/o/oauth2/token",
+    }
+
+    credentials = service_account.Credentials.from_service_account_info(account_info, scopes=scopes)
+    return credentials
+
+
+def get_service(service_name='sheets', api_version='v4'):
+    credentials = get_credentials()
+    service = googleapiclient.discovery.build(service_name, api_version, credentials=credentials)
+    return service
+
+service = get_service()
+spreadsheet_id = os.environ["GOOGLE_SPREADSHEET_ID"]
+range_name = "database!B1:B100"
+result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
+values = result.get('values', [])
+
+
+
+
 
 app = Flask(__name__)
 
