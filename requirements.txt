@@ -25,3 +25,4 @@ telepot>=12.7
 pprint
 flask-wtf
 flask-sqlalchemy
+flask-migrate
