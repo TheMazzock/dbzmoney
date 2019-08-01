@@ -24,3 +24,4 @@ Werkzeug>=0.14.1
 telepot>=12.7
 pprint
 flask-wtf
+flask-sqlalchemy
