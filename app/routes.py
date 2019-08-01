@@ -5,7 +5,7 @@ from app.forms import LoginForm
 
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
-def homepage():
+def index():
     service = get_service()
     spreadsheet_id = os.environ["GOOGLE_SPREADSHEET_ID"]
     range_name = os.environ["GOOGLE_CELL_RANGE"]
