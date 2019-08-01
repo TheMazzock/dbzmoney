@@ -1,54 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Situazione Conti</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+{% extends "base.html" %}
 
-	</head>
-	<body>
-		<div class="title">
-			<h1>DBZMoney</h1>
-		</div>
-		<div class="menu">
-			<ul class="ul">
-			<li><a href="#home">Situazione</a></li>
-			<li><a href="#news">Inserisci</a></li>
-			<li><a href="#contact">Previsione</a></li>
-			<li><a href="#about">ControlloSpese</a></li>
-			</ul>
-			</div>
-<div class="footer">
-2019 - TheMazzock
-</div>
-		
-		
-		
-		<div class="container">
-			<h3>Situazione Casa</h3>
+{% block content %}
+	<h3>Situazione Casa</h3>
 
-		    	<table class="table">
-            			{% for row in values %}
-                		<tr>
-                		{% with firstrow = loop.index0 == 0 %}
-                		{% for value in row %}
-                    		{% if firstrow %}
-                        	<th>{{ value }}</th>
-                    		{% else %}
-                        	<td>{{ value }}</td>
-                    		{% endif %}
-                		{% endfor %}
-                		{% endwith %}
-                		</tr>
-            			{% endfor %}
-            		</table>
-
-            	</div>
-
-        <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-	</body>
-</html>
+	<table class="table">
+            	{% for row in values %}
+                <tr>
+                {% with firstrow = loop.index0 == 0 %}
+                {% for value in row %}
+                {% if firstrow %}
+                <th>{{ value }}</th>
+                {% else %}
+                <td>{{ value }}</td>
+                {% endif %}
+                {% endfor %}
+                {% endwith %}
+                </tr>
+		{% endfor %}
+	</table>
+{% endblock %}
