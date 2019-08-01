@@ -1,4 +1,4 @@
-from app import app
+from app import app, get_service
 
 @app.route('/', methods=['GET'])
 def homepage():
