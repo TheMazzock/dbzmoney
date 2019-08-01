@@ -1,3 +1,6 @@
+from app import app
+
+"""
 import os
 from flask import Flask, render_template
 import googleapiclient.discovery
@@ -102,5 +105,5 @@ def homepage():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
+"""
 
