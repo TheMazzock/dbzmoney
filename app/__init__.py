@@ -1,5 +1,6 @@
 import os
-from flask import Flask, render_template
+from flask import Flask
+from config import Config
 import googleapiclient.discovery
 from google.oauth2 import service_account
 
@@ -37,8 +38,6 @@ values = result.get('values', [])
 
 
 app = Flask(__name__)
+app.config.from_object(Config)
+
 from app import routes
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
