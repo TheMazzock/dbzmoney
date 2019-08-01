@@ -1,6 +1,7 @@
 from app import app, get_service
 import os
 from flask import render_template
+from app.forms import LoginForm
 
 @app.route('/', methods=['GET'])
 def homepage():
@@ -13,3 +14,8 @@ def homepage():
     values = result.get('values', [])
 
     return render_template('index.html', values=values)
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Sign In', form=form)
