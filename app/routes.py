@@ -1,4 +1,5 @@
 from app import app, get_service
+import os
 
 @app.route('/', methods=['GET'])
 def homepage():
