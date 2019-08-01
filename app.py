@@ -51,81 +51,8 @@ def situazione(cid):
     bot.sendMessage(cid, output)
     bot.sendMessage(cid, 'Seleziona', reply_markup=startmarkup)
 
-def conti(qid,fid):
-    bot.answerCallbackQuery(qid, text='Situazione conti aggiornata')
-
-def inserimento(cid):
-    bot.sendMessage(cid, 'Seleziona', reply_markup=contimarkup)
-    
-def ritorna(qid,fid):
-    bot.answerCallbackQuery(qid, text='Torno indietro!')
-    bot.sendMessage(fid, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startmarkup)
-    
-
-def on_chat_message(msg):
-    content_type, chat_type, chat_id = telepot.glance(msg)
-    print(chat_id)
-    if content_type == 'text':
-        text = msg['text']
-    if text == '/start':
-        bot.sendMessage(chat_id, 'Conti della famiglia DeLima Mazzocchi. Seleziona:', reply_markup=startmarkup)
-    if text == "Situazione":
-        situazione(chat_id)
-    if text == "Inserimento":
-        inserimento(chat_id)
-    if text == "Conti":
-        conti(chat_id)
-        
-def on_callback_query(msg):
-    query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
-    print('Callback Query:', query_id, from_id, query_data)
-    
-    if query_data == "situazione":
-        situazione(query_id,from_id)
-        
-    elif query_data == "conti":
-        conti(query_id,from_id)
-        
-    elif query_data == "inserimento":
-        inserimento(query_id,from_id)
-    
-    elif query_data == "ritorna":
-        ritorna(query_id,from_id)
-        
-
-TOKEN = os.environ["BOT_TOKEN"]
-bot = telepot.Bot(TOKEN)
-MessageLoop(bot, {'chat': on_chat_message,
-                  'callback_query': on_callback_query}).run_as_thread()
-print('Listening ....')
-# Keep the program running.
-while 1:
-    time.sleep(10)
-
-
-
-"""
-def handle(msg):
-    content_type, chat_type, chat_id = telepot.glance(msg)
-    print(content_type, chat_type, chat_id)
-    pprint(msg)
-    
-    try:
-        username = msg['from']['username']
-    except:
-        firstname = msg['from']['first_name']
-    user_id = msg['from']['id']
-    
-    if content_type == 'text':
-        text = msg['text']
-    
-    if text == '/start':
-        bot.sendMessage(chat_id, str("Come posso aiutarti?"), reply_markup=start_markup)
-    elif text == 'Aiuto':
-        bot.sendMessage(chat_id,'Bot sviluppato da Alessio')
-    else:
-        bot.sendMessage(chat_id,text)
-"""
+  
+      
 '''
 def get_credentials():
     scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
