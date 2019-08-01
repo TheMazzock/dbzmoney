@@ -1,5 +1,6 @@
 from app import app, get_service
 import os
+from flask import render_template
 
 @app.route('/', methods=['GET'])
 def homepage():
