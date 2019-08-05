@@ -1,4 +1,4 @@
-from app import app""", get_service"""
+from app import app """, get_service"""
 import os
 from flask import render_template, flash, redirect, url_for
 from app.forms import LoginForm
