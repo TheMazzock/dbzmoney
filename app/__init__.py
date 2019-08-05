@@ -1,7 +1,7 @@
 import os
 from flask import Flask
 from config import Config
-import googleapiclient.discovery
+"""import googleapiclient.discovery
 from google.oauth2 import service_account
 
 def get_credentials():
@@ -28,6 +28,7 @@ spreadsheet_id = os.environ["GOOGLE_SPREADSHEET_ID"]
 range_name = "database!B1:B100"
 result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
 values = result.get('values', [])
+"""
   
 
 
